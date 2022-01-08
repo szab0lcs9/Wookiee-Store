@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,7 @@ use App\Http\Controllers;
 */
 
 Route::get('/', [Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/new-product', [Controller\ProductController::class, 'create'])->name('product.create');
+
+Route::post('/new-product', Controller\ProductController::class, 'store');
