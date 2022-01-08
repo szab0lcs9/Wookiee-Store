@@ -19,5 +19,4 @@ use App\Http\Controllers\Controller;
 Route::get('/', [Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/new-product', [Controller\ProductController::class, 'create'])->name('product.create');
-
-Route::post('/new-product', Controller\ProductController::class, 'store');
+Route::post('/new-product', [Controller\ProductController::class, 'store']);
