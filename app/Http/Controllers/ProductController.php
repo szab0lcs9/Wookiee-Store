@@ -46,7 +46,7 @@ class ProductController extends Controller
 
         $product = $authUser->products()->create($request->except(['_token']));
 
-        dd($product);
+        return redirect()->route('product.show', $product);
     }
 
     /**
@@ -57,7 +57,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        dd($product);
     }
 
     /**
