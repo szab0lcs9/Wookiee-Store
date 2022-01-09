@@ -18,7 +18,7 @@
                     <div class="mb-3">
                         <label class="mb-2">{{ __('Category') }}</label>
                         <select name="category_id" class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}">
-                            <option value="">Please choose</option>
+                            <option value="">{{ __('Please choose') }}</option>
                             @foreach ($category_options as $category)
                             <option value="{{ $category->id }} {{ old('category_id') == $category->id ? 'selected' : '' }}">
                                 {{ $category->name }}
