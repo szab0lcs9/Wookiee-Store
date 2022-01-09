@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->float('price', 5, 2);
+            $table->binary('picture');
             $table->foreignId('category_id');
             $table->timestamps();
             $table->foreignId('cart_id')->nullable();
