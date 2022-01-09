@@ -17,6 +17,7 @@
     <body>
         @include('layout._header')
         <main class="container mt-5 mb-4">
+            @include('layout.alert._success')
             @yield('content')
         </main>
         @include('layout._footer')

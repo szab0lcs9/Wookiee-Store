@@ -46,7 +46,7 @@ class ProductController extends Controller
 
         $product = $authUser->products()->create($request->except(['_token']));
 
-        return redirect()->route('product.show', $product);
+        return redirect()->route('product.show', $product)->with('success', __('Product created successfully'));
     }
 
     /**
