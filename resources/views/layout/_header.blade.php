@@ -24,6 +24,21 @@
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </form>
+                    <div class="ms-2 d-flex justify-content-end align-items-center dropdown">
+                        @auth
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: brown">
+                                <span>{{ Auth::user()->name }}</span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">{{ __('My Profile') }}</a></li>
+                                <li><a class="dropdown-item" href="#!">{{ __('My Products') }}</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!">{{ __('Sign out') }}</a></li>
+                        @else
+                        <a class="btn btn-outline-dark" href="#">{{ __('Sign up') }}</a>
+                        <a class="btn btn-outline-dark" href="#">{{ __('Sign in') }}</a>
+                        @endauth
+                    </div>
                 </div>
             </div>
         </nav>
