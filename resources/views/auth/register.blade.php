@@ -36,6 +36,17 @@
                                 <p class="invalid-feedback">{{ $errors->first('password_confirmation') }}</p>
                             @endif
                         </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="1" id="terms" name="terms">
+                                <label class="form-check-label{{ $errors->has('terms') ? 'is-invalid' : '' }}" for="terms">
+                                    {{ __('I agree to') }} <a href="#">{{ __('Terms and Conditions') }}</a>
+                                </label>
+                                @if ($errors->has('terms'))
+                                    <p class="invalid-feedback">{{ $errors->first('terms') }}</p>
+                                @endif
+                            </div>
+                        </div>
                         <div class="d-grid">
                             <button class="btn btn-outline-primary btn-lg">
                                 {{ __('Sign Up') }}
