@@ -40,7 +40,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|min:10|max:200',
+            'category_id' => 'required|exists:categories',
+            'price' => 'required|between:0.00,100000.00',
+            'file' => 'required|size:1024'
+        ]);
     }
 
     /**
@@ -86,5 +91,10 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function showAll()
+    {
+        return view('product.total');
     }
 }
