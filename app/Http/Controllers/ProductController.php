@@ -42,9 +42,9 @@ class ProductController extends Controller
     {
         $request->validate([
             'title' => 'required|min:10|max:200',
-            'category_id' => 'required|exists:categories',
-            'price' => 'required|between:0.00,100000.00',
-            'file' => 'required|size:1024'
+            'category_id' => 'required|exists:categories,id',
+            'price' => 'required|min:0.01|max:100000.00',
+            'file' => 'required'
         ]);
     }
 
