@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->foreignId('category_id');
             $table->timestamps();
             $table->foreignId('cart_id')->nullable();
+            $table->foreignId('owner_id')->nullable();
         });
     }
 

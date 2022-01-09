@@ -9,10 +9,10 @@
             <div class="card">
                 <div class="card-body">
                     <div class="mb-3">
-                        <label class="mb-2">{{ __('Title') }}</label>
-                        <input type="text" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}">
-                        @if ($errors->has('title'))
-                            <p class="invalid-feedback">{{ $errors->first('title') }}</p>
+                        <label class="mb-2">{{ __('Product name') }}</label>
+                        <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{ old('name') }}">
+                        @if ($errors->has('name'))
+                            <p class="invalid-feedback">{{ $errors->first('name') }}</p>
                         @endif
                     </div>
                     <div class="mb-3">

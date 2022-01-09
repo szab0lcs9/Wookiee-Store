@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -35,17 +37,16 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\PostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $request->validate([
-            'title' => 'required|min:10|max:200',
-            'category_id' => 'required|exists:categories,id',
-            'price' => 'required|min:0.01|max:100000.00',
-            'file' => 'required'
-        ]);
+        $authUser = User::first();
+
+        $product = $authUser->products()->create($request->except(['_token']));
+
+        dd($product);
     }
 
     /**
@@ -73,11 +74,11 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\PostRequest  $request
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(PostRequest $request, Product $product)
     {
         //
     }
