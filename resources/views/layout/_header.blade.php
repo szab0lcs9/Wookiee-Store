@@ -10,7 +10,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('Shop') }}</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">{{ __('All Products') }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('product.total') }}">{{ __('All Products') }}</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="#!">{{ __('Popular Items') }}</a></li>
                                 <li><a class="dropdown-item" href="#!">{{ __('New Arrivals') }}</a></li>
@@ -24,19 +24,22 @@
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </form>
-                    <div class="ms-2 d-flex justify-content-end align-items-center dropdown">
+                    <div class="ms-5 d-flex justify-content-end align-items-center dropdown">
                         @auth
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: brown">
                                 <span>{{ Auth::user()->name }}</span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#!">{{ __('My Profile') }}</a></li>
-                                <li><a class="dropdown-item" href="#!">{{ __('My Products') }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('product.show') }}">{{ __('My Products') }}</a></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">{{ __('Sign out') }}</a></li>
+                                <form action="{{ route('auth.logout') }}" method="POST">
+                                    @csrf
+                                    <li><button class="dropdown-item">{{ __('Sign out') }}</button></li>
+                                </form>
                         @else
-                        <a class="btn btn-outline-dark" href="#">{{ __('Sign up') }}</a>
-                        <a class="btn btn-outline-dark" href="#">{{ __('Sign in') }}</a>
+                            <a class="ms-2 btn btn-outline-dark" href="{{ route('auth.register') }}">{{ __('Sign up') }}</a>
+                            <a class="ms-2 btn btn-outline-dark" href="{{ route('auth.login') }}">{{ __('Sign in') }}</a>
                         @endauth
                     </div>
                 </div>
