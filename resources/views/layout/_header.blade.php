@@ -31,7 +31,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#!">{{ __('My Profile') }}</a></li>
-                                <li><a class="dropdown-item" href="{{ route('product.show') }}">{{ __('My Products') }}</a></li>
+                                <li><a class="dropdown-item" href="#">{{ __('My Products') }}</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <form action="{{ route('auth.logout') }}" method="POST">
                                     @csrf

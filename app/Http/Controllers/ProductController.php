@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -96,6 +97,8 @@ class ProductController extends Controller
 
     public function showAll()
     {
-        return view('product.total');
+        $products = Product::orderBy('created_at', 'desc')->paginate(8);
+
+        return view('product.total')->with(compact('products'));
     }
 }

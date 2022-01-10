@@ -40,7 +40,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="mb-2">{{ __('Picture') }}</label>
-                        <input type="file" accept="image/*" class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="picture">
+                        <input type="file" accept="image/*" class="form-control {{ $errors->has('picture') ? 'is-invalid' : '' }}" name="picture">
                         @if ($errors->has('picture'))
                             <p class="invalid-feedback">{{ $errors->first('picture') }}</p>
                         @endif
