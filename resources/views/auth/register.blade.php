@@ -47,7 +47,12 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="mt-5 d-grid">
+                        <div class="d-flex justify-content-end">
+                            <p>{{ __('Already have an account? ') }}
+                                <a href="{{ route('auth.login') }}">{{ __(' Sign In') }}</a>
+                            </p>
+                        </div>
+                        <div class="d-grid">
                             <button class="btn btn-outline-primary btn-lg">
                                 {{ __('Sign Up') }}
                             </button>
