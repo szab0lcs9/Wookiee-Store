@@ -34,11 +34,13 @@ Route::get('/products', [Controllers\ProductController::class, 'showAll'])->name
 
 Route::middleware(['auth'])->group(function() {
     
-    Route::get('/new-product', [Controllers\ProductController::class, 'edit'])->name('product.edit');
-    Route::post('/new-product', [Controllers\ProductController::class, 'update']);
+    Route::get('/new-product', [Controllers\ProductController::class, 'create'])->name('product.create');
+    Route::post('/new-product', [Controllers\ProductController::class, 'store']);
     
-    Route::get('/product/{product}/edit', [Controllers\ProductController::class, 'create'])->name('product.create');
-    Route::post('/product/{product}/edit', [Controllers\ProductController::class, 'store']);
+    Route::get('/product/{product}/edit', [Controllers\ProductController::class, 'edit'])->name('product.edit');
+    Route::post('/product/{product}/edit', [Controllers\ProductController::class, 'update']);
+
+    Route::post('/product/{product}', [Controllers\ProductController::class, 'update']);
     
     Route::get('/product/{product}', [Controllers\ProductController::class, 'show'])->name('product.show');
     
