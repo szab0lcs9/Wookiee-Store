@@ -5,7 +5,9 @@
                 <img class="w-auto mw-100 mh-100 px-auto" src="{{ $product->image }}">
             </div>
             <div class="mh-40 mt-auto">
-                <h5 class="mb-3 text-center"> {{ $product->name }}</h2>
+                <h5 class="mb-3 text-center">
+                    <a class="mb-3 text-dark" style="text-decoration: none" href="{{ route('product.show', $product) }}">{{ $product->name }}</a>
+                </h5>
                 <p class="text-center">{{ __('Price') }}: {{__('$')}}{{ $product->price }}</p>
             </div>
             <div class="d-grid gap-2 col-sm-12 p-2">
