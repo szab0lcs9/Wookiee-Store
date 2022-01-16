@@ -1,8 +1,8 @@
 <div class="col-sm-4 col-md-3 mx-auto my-4">
     <div class="card h-100">
-        <div class="d-flex flex-column justify-content-center card-body">
-            <div class="mh-60 mb-3" style="max-height: 300px">
-                <img class="w-auto mw-100 mh-100 px-auto" src="{{ $product->picture }}">
+        <div class="d-flex flex-column justify-content-center card-body mx-auto">
+            <div class="mh-60 mb-3 mx-auto" style="max-height: 300px">
+                <img class="w-auto mw-100 mh-100 px-auto" src="{{ $product->image }}">
             </div>
             <div class="mh-40 mt-auto">
                 <h5 class="mb-3 text-center"> {{ $product->name }}</h2>

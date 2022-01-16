@@ -17,7 +17,7 @@ class PostRequest extends FormRequest
             'name' => 'required|min:10|max:200',
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|min:0.01|max:100000.00',
-            'picture' => 'required'
+            'image' => 'required'
         ];
     }
 }

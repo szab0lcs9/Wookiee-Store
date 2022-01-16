@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-<form action="{{ route('product.create') }}" method="POST">
+<form action="{{ route('product.create') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-md-10 col-lg-8 mx-auto">
@@ -39,13 +39,13 @@
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label class="mb-2">{{ __('Picture') }}</label>
-                        <input type="file" accept="image/*" class="form-control {{ $errors->has('picture') ? 'is-invalid' : '' }}" name="picture">
-                        @if ($errors->has('picture'))
-                            <p class="invalid-feedback">{{ $errors->first('picture') }}</p>
+                        <label class="mb-2">{{ __('Image') }}</label>
+                        <input type="file" accept="image/*" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" name="image">
+                        @if ($errors->has('image'))
+                            <p class="invalid-feedback">{{ $errors->first('image') }}</p>
                         @endif
                     </div>
-                    <div class="pt-3">
+                    <div class="mt-5">
                         <button class="btn btn-primary btn-lg" type="submit">
                             {{__('Create')}}
                         </button>

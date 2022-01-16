@@ -1,5 +1,5 @@
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light position-sticky top-0" style="z-index: 100">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom position-sticky top-0" style="z-index: 100">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="#!">Wookiee Store</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -36,6 +36,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#!">{{ __('My Profile') }}</a></li>
                                 <li><a class="dropdown-item" href="#">{{ __('My Products') }}</a></li>
+                                <li><a class="dropdown-item" href={{ route('product.create') }}>{{ __('Create Product') }}</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <form action="{{ route('auth.logout') }}" method="POST">
                                     @csrf

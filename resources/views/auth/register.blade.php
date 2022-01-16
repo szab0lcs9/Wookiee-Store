@@ -36,7 +36,7 @@
                                 <p class="invalid-feedback">{{ $errors->first('password_confirmation') }}</p>
                             @endif
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-5">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="1" id="terms" name="terms">
                                 <label class="form-check-label{{ $errors->has('terms') ? 'is-invalid' : '' }}" for="terms">
@@ -47,7 +47,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="d-grid">
+                        <div class="mt-5 d-grid">
                             <button class="btn btn-outline-primary btn-lg">
                                 {{ __('Sign Up') }}
                             </button>

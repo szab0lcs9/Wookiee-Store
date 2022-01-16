@@ -6,7 +6,7 @@
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-body">
-                        <img src="{{ $product->picture }}">
+                        <img src="{{ asset('public/' . $product->image) }}">
                         <h3 class="text-center"> {{ $product->name }}</h2>
                         <p class="text-center">Price: {{__('$')}}{{ $product->price }}</p>
                     </div>

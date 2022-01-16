@@ -27,7 +27,7 @@
                                 <p class="invalid-feedback">{{ $errors->first('password') }}</p>
                             @endif
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-5">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="1" id="remember_me" name="remember_me">
                                 <label class="form-check-label" for="remember_me">
@@ -35,7 +35,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="d-grid">
+                        <div class="mt-5 d-grid">
                             <button class="btn btn-outline-primary btn-lg">
                                 {{ __('Sign In') }}
                             </button>

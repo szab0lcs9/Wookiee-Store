@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -46,6 +47,17 @@ class ProductController extends Controller
         $authUser = User::first();
 
         $product = $authUser->products()->create($request->except(['_token']));
+
+        if ($request->hasFile('image')) {
+
+            $image = $request->file('image');
+            $destination = 'public';
+            $name = $image->getClientOriginalName();
+    
+            Storage::putFileAs($destination, $image, $name);
+
+            $product['image'] = $name;
+        }
 
         return redirect()->route('product.show', $product)->with('success', __('Product created successfully'));
     }
