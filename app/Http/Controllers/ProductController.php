@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Image;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -49,7 +50,7 @@ class ProductController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $authUser = User::first();
+        $authUser = User::current();
 
         $product = $authUser->products()->create($request->except(['_token']));
 
@@ -102,7 +103,7 @@ class ProductController extends Controller
     {
         $product->update($request->all());
 
-        return redirect()->route('product.edit', $product)->with('succes', __('Product updated successfully'));
+        return redirect()->route('product.edit', $product)->with('success', __('Product updated successfully'));
     }
 
     /**
@@ -113,7 +114,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('product.my_products', $product)->with('success', __('Product deleted successfully'));
     }
 
     public function showAll()
