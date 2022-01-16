@@ -50,7 +50,7 @@ class ProductController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $authUser = User::current();
+        $authUser = User::first();
 
         $product = $authUser->products()->create($request->except(['_token']));
 
