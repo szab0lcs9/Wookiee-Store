@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Product::class, 'product');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -81,7 +86,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $category_options = Category::orderBy('name')->get();
+
+        return view('product.edit')->with(compact('product', 'category_options'));
     }
 
     /**
@@ -93,7 +100,9 @@ class ProductController extends Controller
      */
     public function update(PostRequest $request, Product $product)
     {
-        //
+        $product->update($request->all());
+
+        return redirect()->route('product.edit', $product)->with('succes', __('Product updated successfully'));
     }
 
     /**
