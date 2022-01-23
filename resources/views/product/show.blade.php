@@ -6,7 +6,7 @@
             <div class="col-md-5 m-auto">
                 <div class="card mt-3">
                     <div class="card-body">
-                        <img src="{{ asset('public/' . $product->image) }}">
+                        <img src="{{ $product->image }}">
                     </div>
                 </div>
             </div>
@@ -31,6 +31,14 @@
                                         {{__('$')}}{{ $product->price }}
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th>
+                                        {{ __('Seller:') }}
+                                    </th>
+                                    <td>
+                                        {{ $user->name }}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="d-grid gap-2 col-sm-12 p-2">
@@ -40,17 +48,19 @@
                             <button class="btn btn-outline-primary btn-lg" type="button">
                                 {{__('Buy it now')}}
                             </button>
-                        </div>           
-                        @can('update', $product)
-                            <a class="ms-auto" href="{{ route('product.edit', $product) }}">
-                                {{ __('edit') }}
-                            </a>
-                        @endcan
-                        @can('delete', $product)
-                            <a class="ms-auto" href="{{ route('product.edit', $product) }}">
-                                {{ __('delete') }}
-                            </a>
-                        @endcan
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            @can('update', $product)
+                                <a class="mx-2 btn btn-outline-primary" href="{{ route('product.edit', $product) }}">
+                                    {{ __('Edit') }}
+                                </a>
+                            @endcan
+                            @can('delete', $product)
+                                <a class="mx-2 btn btn-outline-primary" href="{{ route('product.delete', $product) }}">
+                                    {{ __('Delete') }}
+                                </a>
+                            @endcan
+                        </div>
                     </div>
                 </div>
             </div>

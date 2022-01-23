@@ -6,7 +6,7 @@ use Image;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
-use App\Http\Requests\PostRequest;
+use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -48,13 +48,13 @@ class ProductController extends Controller
      * @param  \App\Http\Requests\PostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostRequest $request)
+    public function store(ProductRequest $request)
     {
         $authUser = User::first();
 
         $product = $authUser->products()->create($request->except(['_token']));
 
-        if ($request->hasFile('image')) {
+        if ($request->file('image')) {
 
             $image = $request->file('image');
             $destination = 'public';
@@ -76,7 +76,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('product.show')->with(compact('product'));
+        $user = User::first();
+
+        return view('product.show')->with(compact('product', 'user'));
     }
 
     /**
@@ -99,7 +101,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(PostRequest $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
         $product->update($request->all());
 
