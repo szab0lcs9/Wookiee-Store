@@ -8,8 +8,10 @@ use App\Models\Product;
 use App\Models\User;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+
 
 class ProductController extends Controller
 {
@@ -61,8 +63,11 @@ class ProductController extends Controller
             $name = $image->getClientOriginalName();
     
             Storage::putFileAs($destination, $image, $name);
+            //dd($name);
 
             $product['image'] = $name;
+
+            $product->save();
         }
 
         return redirect()->route('product.show', $product)->with('success', __('Product created successfully'));
@@ -76,7 +81,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $user = User::first();
+        $user = Auth::user();
 
         return view('product.show')->with(compact('product', 'user'));
     }
