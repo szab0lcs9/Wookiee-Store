@@ -18,8 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name')->unique();
             $table->float('price', 5, 2);
             $table->string('image');
-            $table->foreignId('category_id');
             $table->timestamps();
+            $table->foreignId('category_id');
             $table->foreignId('cart_id')->nullable();
             $table->foreignId('owner_id')->nullable();
         });
